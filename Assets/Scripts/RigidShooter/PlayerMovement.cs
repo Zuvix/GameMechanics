@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float rotationSpeed = 1f;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -31,6 +31,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.eulerAngles -= Vector3.forward * rotationSpeed * Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rigidBody2D.velocity = new Vector3(0, 0);
+            rigidBody2D.AddForce(transform.up * speed * 3 * Time.deltaTime,ForceMode2D.Impulse);
         }
 
     }
